@@ -1,13 +1,6 @@
 #!/usr/bin/python3
 """Module declaration to manage file storage"""
 import json
-from models.base_model import BaseModel
-from models.user import User
-from models.review import Review
-from models.amenity import Amenity
-from models.state import State
-from models.city import City
-from models.place import Place
 
 
 class FileStorage:
@@ -32,7 +25,7 @@ class FileStorage:
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
-        self.__objects.upate(
+        self.__objects.update(
                 {obj.to_dict()['__class__'] + obj.id: obj}
                 )
 
@@ -47,6 +40,14 @@ class FileStorage:
 
     def reload(self):
         """Deserialize the JSON file"""
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.place import Place
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.review import Review
+
         classes = {
                 'BaseModel': BaseModel, 'User': User, 'State': State,
                 'City': City, 'Place': Place, 'Amenity': Amenity,

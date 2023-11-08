@@ -5,6 +5,7 @@ import uuid
 from datetime import datetime
 from models import storage
 
+
 class BaseModel:
     """Base class"""
 
@@ -15,16 +16,21 @@ class BaseModel:
             *args (any): Unused.
             **kwargs (dict): Key/pairs of attributes.
         """
-        if (not kwargs):
+        if not kwargs:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
         else:
             for i in kwargs:
-                if (i in ['created_at', 'updated_at']):
+                if i in ['created_at', 'updated_at']:
                     setattr(self, i, datetime.fromisoformat(kwargs[i]))
-                elif (i != '__class__'):
+                elif i != '__class__':
                     setattr(self, i, kwargs[i])
+
+    def __str__(self):
+        """Returns a string representation of the instance"""
+        return ('[{}] ({}) {}'.format(
+            self.__class__.__name__, self.id, self.__dict__))
 
     def save(self):
         """Updates the update_at with current time when instance changed"""
@@ -32,15 +38,10 @@ class BaseModel:
         storage.new(self)
         storage.save()
 
-    def __str__(self):
-        """Returns a string representation of the instance"""
-        return ('[{}] ({}) {}'.format(
-            self.__class__.name, self.id, self.__dict__))
-
     def to_dict(self):
         """Return the dictionary of the BaseModel instance"""
         dct = self.__dict__.copy()
-        dct['__class__'] = self.__class__.name
+        dct['__class__'] = self.__class__.__name__
         for j in dct:
             if type(dct[j]) is datetime:
                 dct[j] = dct[j].isoformat()
