@@ -16,8 +16,8 @@ from models.review import Review
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class for HBNB"""
 
-    # TODO Check for interactive/non-interactive mode
-    prompt = '(hbnb) '
+    # Check for interactive/non-interactive mode
+    prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
 
     model_list = ["BaseModel",
                   "Amenity",
@@ -27,6 +27,11 @@ class HBNBCommand(cmd.Cmd):
                   "User",
                   "Review"]
     storage = models.storage
+
+    def preloop(self):
+        """Prints if isatty is false"""
+        if not sys.__stdin__.isatty():
+            print('(hbnb) ')
 
     def do_EOF(self, args):
         """Handle EOF to exit program"""
