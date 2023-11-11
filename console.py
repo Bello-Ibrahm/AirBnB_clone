@@ -182,8 +182,7 @@ class HBNBCommand(cmd.Cmd):
             val = model_id_attr_list[3]
 
         setattr(obj, attr, cast_str_int_float(val))
-        obj.save() # save update to file
-
+        obj.save()
 
     def cast_str_int_float(val):
         """Cast a value to its proper type
