@@ -8,7 +8,7 @@ class HBNBCommand(cmd.Cmd):
     """Command interpreter class for HBNB"""
 
     # Check for interactive/non-interactive mode
-    prompt = "(hbnb) " if sys.__stdin__.isatty() ""
+    prompt = '(hbnb) '
 
     def do_EOF(self, arg):
         """Handle EOF to exit program"""
