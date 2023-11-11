@@ -23,22 +23,3 @@ class Amenity_Test(unittest.TestCase):
         amenity = Amenity()
         amenity_name = getattr(amenity, "name")
         self.assertIsInstance(amenity_name, str)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

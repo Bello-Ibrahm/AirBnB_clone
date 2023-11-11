@@ -29,4 +29,3 @@ class User_Test(unittest.TestCase):
         user = User()
         email_type = getattr(user, "email")
         self.assertIsInstance(email_type, str)
-
