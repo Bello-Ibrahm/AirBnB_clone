@@ -12,6 +12,7 @@ from models.user import User
 from models.place import Place
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class for HBNB"""
 
@@ -53,6 +54,7 @@ class HBNBCommand(cmd.Cmd):
             obj = eval(args)()
             obj.save()
             print(obj.id)
+
     def help_create(self):
         """Print info for the create method"""
         print("Create a class of any type")
@@ -116,7 +118,7 @@ class HBNBCommand(cmd.Cmd):
         print("[Usage]: destroy <className> <objectId>\n")
 
     def do_all(self, args):
-        """Prints all string rep of all instances based 
+        """Prints all string rep of all instances based
         or not on the class name
         """
         if not args:
@@ -177,6 +179,7 @@ class HBNBCommand(cmd.Cmd):
         setattr(obj, attr, cast_str_int_float(val))
         obj.save() # save update to file
 
+
     def cast_str_int_float(val):
         """Cast a value to its proper type
 
@@ -199,6 +202,7 @@ class HBNBCommand(cmd.Cmd):
         """print the update documentation"""
         print("Updates an object with new information")
         print("[Usage]: update <className> <id> <attrName> <attVal>\n")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
