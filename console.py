@@ -63,7 +63,7 @@ class HBNBCommand(cmd.Cmd):
     def help_create(self):
         """Print info for the create method"""
         print("Create a class of any type")
-        print("[Usage]: create <className\n")
+        print("[Usage]: create <className>\n")
 
     def do_show(self, args):
         """Shows an individual object"""
