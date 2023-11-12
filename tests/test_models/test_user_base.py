@@ -7,15 +7,15 @@ import sys
 import datetime
 
 
-class User_Test(unittest.TestCase):
+class test_User_Test(unittest.TestCase):
     """Tests for User class"""
 
-    def User_from_Base(self):
+    def test_User_from_Base(self):
         """Tests if User inherits from BaseModel"""
         user = User()
         self.assertIsInstance(user, BaseModel)
 
-    def User_attributes(self):
+    def test_User_attributes(self):
         """Tests for Users attributes"""
 
         user = User()
@@ -24,8 +24,12 @@ class User_Test(unittest.TestCase):
         self.assertTrue("first_name" in user.__dir__())
         self.assertTrue("last_name" in user.__dir__())
 
-    def email_type(self):
+    def test_email_type(self):
         """Tests for email type"""
         user = User()
         email_type = getattr(user, "email")
         self.assertIsInstance(email_type, str)
+
+
+if __name__ == "__main__":
+    unittest.main()

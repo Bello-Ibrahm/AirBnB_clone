@@ -37,7 +37,7 @@ class TestHBNBCommand_create(unittest.TestCase):
     """Unittests for testing create from the HBNB command interpreter."""
 
     @classmethod
-    def setUp(self):
+    def test_setUp(self):
         try:
             os.rename("file.json", "tmp")
         except IOError:
@@ -45,7 +45,7 @@ class TestHBNBCommand_create(unittest.TestCase):
         FileStorage.__objects = {}
 
     @classmethod
-    def tearDown(self):
+    def test_tearDown(self):
         try:
             os.remove("file.json")
         except IOError:
@@ -86,3 +86,7 @@ class TestHBNBCommand_show(unittest.TestCase):
         except IOError:
             pass
         FileStorage.__objects = {}
+
+
+if __name__ == "__main__":
+    unittest.main()
