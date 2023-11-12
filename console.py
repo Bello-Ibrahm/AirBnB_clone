@@ -26,6 +26,7 @@ class HBNBCommand(cmd.Cmd):
                   "Place",
                   "User",
                   "Review"]
+    dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
     storage = models.storage
 
     def preloop(self):
@@ -48,6 +49,12 @@ class HBNBCommand(cmd.Cmd):
     def help_quit(self):
         """Prints out the help doc for quit"""
         print("Quit command to exit program\n")
+
+    def postcmd(self, stp, ln):
+        """Prints if isatty is false"""
+        if not sys.__stdin__.isatty():
+            print('(hbnb) ', end='')
+        return stp
 
     def do_create(self, args):
         """Create a new instance of model"""
@@ -92,6 +99,18 @@ class HBNBCommand(cmd.Cmd):
         """Print out show documentation"""
         print("Shows an individual instance of a class")
         print("[Usage]: show <className> <objectId>\n")
+
+    def do_count(self, args):
+        """Count current number of class instances"""
+        count = 0
+        for k, v in storage.all().items():
+            if args == k.split('.')[0]:
+                count += 1
+        print(count)
+
+    def help_count(self):
+        """Prints Count documentation"""
+        print("Usage: count <class_name>")
 
     def do_destroy(self, args):
         """Destroy an instance based on the class name and id"""
