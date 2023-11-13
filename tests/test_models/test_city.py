@@ -5,7 +5,7 @@ from models.base_model import BaseModel
 from models.city import City
 
 
-class test_City_Test(unittest.TestCase):
+class City_Test(unittest.TestCase):
     """Tests for City class"""
 
     def test_City_from_Base(self):

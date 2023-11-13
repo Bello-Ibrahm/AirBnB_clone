@@ -2,7 +2,12 @@
 """Base class module definition for all models in hbnb clone"""
 
 import uuid
+import models
 from datetime import datetime
+<<<<<<< HEAD
+=======
+
+>>>>>>> 196822e5b6c7f0583045a0aece70690fdec0fc90
 
 class BaseModel:
     """Base class"""
@@ -16,8 +21,8 @@ class BaseModel:
         """
         if not kwargs:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.created_at = datetime.today()
+            self.updated_at = datetime.today()
         else:
             for i in kwargs:
                 if i in ['created_at', 'updated_at']:
@@ -32,6 +37,7 @@ class BaseModel:
 
     def save(self):
         """Updates the update_at with current time when instance changed"""
+<<<<<<< HEAD
         from models import storage
         self.updated_at = datetime.now()
         storage.new(self)
@@ -52,3 +58,15 @@ class BaseModel:
         '''deletes the current instance from the storage'''
         from models import storage
         storage.delete(self)
+=======
+        self.update_at = datetime.today()
+        models.storage.save()
+
+    def to_dict(self):
+        """Return the dictionary of the BaseModel instance"""
+        retdict = self.__dict__.copy()
+        retdict["created_at"] = self.created_at.isoformat()
+        retdict["updated_at"] = self.updated_at.isoformat()
+        retdict["__class__"] = self.__class__.__name__
+        return retdict
+>>>>>>> 196822e5b6c7f0583045a0aece70690fdec0fc90
