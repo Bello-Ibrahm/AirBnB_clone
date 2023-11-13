@@ -15,7 +15,11 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-    """Command interpreter class for HBNB"""
+    """Command interpreter class for HBNB.
+
+    Attributes:
+        prompt (str): The command prompt.
+    """
 
     # Check for interactive/non-interactive mode
     prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''

@@ -3,8 +3,6 @@
 
 import uuid
 from datetime import datetime
-from models import storage
-
 
 class BaseModel:
     """Base class"""
@@ -34,7 +32,8 @@ class BaseModel:
 
     def save(self):
         """Updates the update_at with current time when instance changed"""
-        self.update_at = datetime.now()
+        from models import storage
+        self.updated_at = datetime.now()
         storage.new(self)
         storage.save()
 
@@ -42,9 +41,14 @@ class BaseModel:
         """Return the dictionary of the BaseModel instance"""
         dct = self.__dict__.copy()
         dct['__class__'] = self.__class__.__name__
-        for j in dct:
-            if type(dct[j]) is datetime:
-                dct[j] = dct[j].isoformat()
-        if ('_sa_instance_state' in dct.keys()):
+        for k in dct:
+            if type(dct[k]) is datetime:
+                dct[k] = dct[k].isoformat()
+        if '_sa_instance_state' in dct.keys():
             del(dct['_sa_instance_state'])
-        return (dct)
+        return dct
+
+    def delete(self):
+        '''deletes the current instance from the storage'''
+        from models import storage
+        storage.delete(self)
