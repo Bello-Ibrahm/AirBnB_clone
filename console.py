@@ -218,16 +218,16 @@ class HBNBCommand(cmd.Cmd):
         return stp
 
     def do_update(self, args):
-            """Updates an instance based on the class name and id"""
-            model_id_attr_list = shlex.split(args)
-            if len(model_id_attr_list) == 0:
-                print("** class name missing **")
+        """Updates an instance based on the class name and id"""
+        model_id_attr_list = shlex.split(args)
+        if len(model_id_attr_list) == 0:
+            print("** class name missing **")
+            return
+        else:
+            model = model_id_attr_list[0]
+            if model not in self.model_list:
+                print("** class doesn't exist **")
                 return
-            else:
-                model = model_id_attr_list[0]
-                if model not in self.model_list:
-                    print("** class doesn't exist **")
-                    return
 
             if len(model_id_attr_list) == 1:
                 print("** instance id missing **")
@@ -253,8 +253,7 @@ class HBNBCommand(cmd.Cmd):
                 val = model_id_attr_list[3]
 
             setattr(obj, attr, cast_str_int_float(val))
-            obj.save() # save update to file
-
+            obj.save()  # save update to file
 
     def cast_str_int_float(val):
         """Cast a value to its proper type

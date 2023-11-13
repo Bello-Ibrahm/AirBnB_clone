@@ -29,3 +29,7 @@ class TestBaseModel(unittest.TestCase):
     def test_pub_id_str(self):
         """Unittest if public id is a string"""
         self.assertEqual(str, type(BaseModel().id))
+
+
+if __name__ == "__main__":
+    unittest.main()
