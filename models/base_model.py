@@ -46,5 +46,5 @@ class BaseModel:
             if type(dct[j]) is datetime:
                 dct[j] = dct[j].isoformat()
         if ('_sa_instance_state' in dct.keys()):
-            del(dct['_sa_instance_state'])
+            del dct['_sa_instance_state']
         return (dct)

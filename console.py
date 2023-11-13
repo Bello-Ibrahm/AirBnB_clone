@@ -85,10 +85,8 @@ class HBNBCommand(cmd.Cmd):
             idx = model_id_list[1]
             try:
                 print(self.storage.all()[model + "." + idx])
-                return
             except KeyError:
                 print("** no instance found **")
-                return
 
     def help_show(self):
         """Print out show documentation"""
