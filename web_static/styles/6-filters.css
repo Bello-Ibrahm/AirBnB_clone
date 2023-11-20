@@ -1,7 +1,7 @@
 ul li {
 	list-style-type: none;
+	margin: .25rem .7rem;
 }
-
 section.filters {
 	background-color: #FFFF;
 	height: 70px;
@@ -11,8 +11,7 @@ section.filters {
 	margin: 30px 0;
 	align-items: center;
 	display: flex;
-	justify-content: space-between;
-	/*overflow: hidden;*/	
+	position: relative;
 }
 
 section.filters button {
@@ -25,6 +24,8 @@ section.filters button {
 	margin-right: 30px;
 	border: none;
 	border-radius: 4px;
+	position: absolute;
+	right: 0;
 }
 
 section.filters button:hover {
@@ -37,11 +38,16 @@ section.filters .locations, section.filters .amenities {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: left;
-	text-align: left;
-	/*position: relative;*/
+	align-content: center;
+	text-align: justify;
+}
+section.filters .locations .popover h2 {
+	font-size: 16px;
 }
 
+section.filters div h3, section.filters div h4 {
+	margin: 0 20px;
+}
 section.filters div h3 {
 	font-weight: 600;
 }
@@ -53,20 +59,19 @@ section.filters div h4 {
 
 section.filters div:first-child {
 	border-right: 1px solid #DDDDDD;
-	margin-left: 10px;
 }
 
 section.filters .popover {
 	width: 25%;
-	opacity: 0;
-	top: 28%;
+	top: 98%;
 	margin: 0;
-	opacity: 0;
-	flex-direction: column;
+	display: none;
 	position: absolute;
+	background-color: #FAFAFA;
+	padding-top: 1rem;
 }
 
 section.filters .locations:hover .popover, section.filters .amenities:hover .popover {
-	opacity: 1;
+	display: block;
 }
 

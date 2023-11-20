@@ -17,6 +17,7 @@ div.container {
 	margin: 30px auto;
 	justify-content: center;
 	align-items: center; 	
+	height: auto;
 	/*border: 1px solid red;*/
 }
 	
